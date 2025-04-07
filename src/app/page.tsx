@@ -3,6 +3,7 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { ReactFlowProvider } from "reactflow";
+import TestMode from "@/components/TestMode/TestMode";
 
 // Import dynamically to avoid SSR issues with ReactFlow
 const Canvas = dynamic(() => import("@/components/Canvas/Canvas"), {
@@ -12,6 +13,14 @@ const Canvas = dynamic(() => import("@/components/Canvas/Canvas"), {
 export default function Home() {
   const [agentName, setAgentName] = useState("My Agent");
   const [globalPrompt, setGlobalPrompt] = useState("");
+  const [agentId, setAgentId] = useState<string | null>(null);
+  const [isTestMode, setIsTestMode] = useState(false);
+
+  const saveAgent = async () => {
+    // TODO: Implementation for saving agent
+    // This would collect all the nodes and edges from the canvas
+    // and send them to the API
+  };
 
   return (
     <main className="flex min-h-screen flex-col">
@@ -19,12 +28,20 @@ export default function Home() {
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-xl font-bold">Canvas LLM Builder</h1>
           <div className="flex gap-2">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button
+              onClick={saveAgent}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
               Save Agent
             </button>
-            <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-              Test Agent
-            </button>
+            {agentId && (
+              <button
+                onClick={() => setIsTestMode(true)}
+                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Test Agent
+              </button>
+            )}
           </div>
         </div>
       </header>
@@ -62,6 +79,10 @@ export default function Home() {
           </ReactFlowProvider>
         </div>
       </div>
+
+      {isTestMode && agentId && (
+        <TestMode agentId={agentId} onClose={() => setIsTestMode(false)} />
+      )}
     </main>
   );
 }
