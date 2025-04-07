@@ -1,0 +1,18 @@
+# Use Docker Compose file format version 3.9
+version: '3.9'
+
+services:
+  # Define the service named 'app'
+  app:
+    # Build the Docker image using the Dockerfile in the current directory
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Name the container 'nextjs14-container'
+    container_name: nextjs14-container
+    # Map port 3000 on the host to port 3000 in the container
+    ports:
+      - '3000:3000'
+    # Avoid mounting node_modules from the host to the container
+    volumes:
+      - /app/node_modules
