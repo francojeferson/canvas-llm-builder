@@ -29,12 +29,12 @@ function StateNode({ data, isConnectable }: NodeProps) {
           <input
             value={stateName}
             onChange={(e) => setStateName(e.target.value)}
-            className="border p-1 rounded"
+            className="border p-1 rounded text-gray-100 dark:text-gray-900"
           />
           <textarea
             value={statePrompt}
             onChange={(e) => setStatePrompt(e.target.value)}
-            className="border p-1 rounded h-24"
+            className="border p-1 rounded h-24 text-gray-100 dark:text-gray-900"
             placeholder="Enter prompt for this state..."
           />
           <div className="flex justify-between mt-2">
@@ -54,12 +54,12 @@ function StateNode({ data, isConnectable }: NodeProps) {
         </div>
       ) : (
         <div onClick={() => setIsEditing(true)} className="cursor-pointer">
-          <div className="font-bold mb-2">{data.label}</div>
-          <div className="text-sm text-gray-700 line-clamp-3">
+          <div className="font-bold mb-2 text-gray-100 dark:text-gray-900">{data.label}</div>
+          <div className="text-sm text-gray-700 dark:text-gray-300 line-clamp-3">
             {data.prompt || "No prompt set"}
           </div>
           {data.isInitial && (
-            <div className="mt-2 text-xs bg-green-200 inline-block px-2 py-1">
+            <div className="mt-2 text-xs bg-blue-600 dark:bg-blue-800 text-white dark:text-white rounded inline-block px-2 py-1">
               Initial State
             </div>
           )}

@@ -47,11 +47,11 @@ export default function Home() {
       </header>
 
       <div className="flex flex-col md:flex-row h-[calc(100vh-64px)]">
-        <div className="w-full md:w-80 bg-slate-100 p-4 overflow-y-auto">
-          <h2 className="text-lg font-semibold mb-4">Agent Configuration</h2>
+        <div className="w-full md:w-80 bg-white dark:bg-gray-800 p-4 overflow-y-auto">
+          <h2 className="text-lg text-gray-900 dark:text-white font-semibold mb-4">Agent Configuration</h2>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">Agent Name</label>
+            <label className="block text-sm text-gray-700 dark:text-gray-300 font-medium mb-1">Agent Name</label>
             <input
               type="text"
               value={agentName}
@@ -61,7 +61,7 @@ export default function Home() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">
+            <label className="block text-sm text-gray-700 dark:text-gray-300 font-medium mb-1">
               Global Prompt
             </label>
             <textarea
